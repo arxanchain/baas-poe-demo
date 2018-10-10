@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title data-localize="title.proof">资产存证</title>
+  <meta charset='utf-8' />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+  <meta name="description" content="Proof of Existence" />
+  <link rel="shortcut icon" href="../static/img/favicon.ico">
+  <link href="../static/css/bootstrap.css" rel="stylesheet">
+  <link href="../static/css/main.css" rel="stylesheet">
+</head>
+
+<body id="allBody" onload="initFun()">
+
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <img class="logo" src="../static/img/logo.png" alt="阿尔山金融科技"/>
+        <!-- <a class="brand" href="index.html" data-localize="title.proof">资产存证</a> -->
+        <div class="nav-collapse collapse">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" style="padding-top:40px;">
+    <div style="margin-top:48px;" class="notifications top-right"></div>
+
+    <div id="content">
+      <div class="hero-unit">
+        <h3 data-localize="index.select_title">数字资产存证</h3>
+        <div id="wait" class="row">
+          <div class="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+          </div>
+          Loading...
+        </div>
+
+    		<form id="upload_form" enctype="multipart/form-data" action="">
+          <div style="display:none;">选择存证的文件:
+            <input id='poe_file' type="file" name="poe_file" @change="onFileChange_idback"/>
+          </div>
+        </form>
+
+        <div id="filedrag" style="display: none;" class="dropbox" data-localize="index.dropbox">
+          点击上传文件或者将文件拖拽到此处，进行上传操作
+        </div>
+
+        <div id="hash-info">
+    	     文件的hash值
+        </div>
+
+        <div id="explain"></div>
+        <div class="progress progress-striped">
+          <div class="bar"></div>
+        </div>
+
+      </div>
+      <div class="doc-detail-container" id="doc-detail-container">
+
+        {{ if .ErrMsg }}
+        <div class="poe-status" id="poe-status">{{.ErrMsg}}</div>
+        {{end}}
+
+        {{ if .notice }}
+        <div class="poe-status" id="poe-status">{{.notice}}</div>
+        {{end}}
+        <div class="poe-detail">
+          {{ if .poe_id }}
+          <div class="detail-item">
+            <div class="detail-title">存证文件名称:</div>
+            <div class="detail-content"> {{.poe_id}}</div>
+          </div>
+          {{end}}
+
+          {{ if .file_hash }}
+          <div class="detail-item">
+            <div class="detail-title">存证文件Hash:</div>
+            <div class="detail-content">{{.file_hash}}</div>
+          </div>
+          {{end}}
+
+          {{ if .file_size }}
+          <div class="detail-item">
+            <div class="detail-title">存证文件大小:</div>
+            <div class="detail-content">{{.file_size}}kb</div>
+          </div>
+          {{end}}
+
+          {{ if .read_only }}
+          <div class="detail-item">
+            <div class="detail-title">存证文件是否只读:</div>
+            <div class="detail-content">{{.read_only}}</div>
+          </div>
+          {{end}}
+
+          {{ if .created }}
+          <div class="detail-item">
+            <div class="detail-title">存证文件时间戳:</div>
+            <div class="detail-content">{{.created}}</div>
+          </div>
+          {{end}}
+
+          {{ if .transaction_id }}
+          <div class="detail-item">
+            <div class="detail-title">存证交易ID:</div>
+            <div class="detail-content">{{.transaction_id}}</div>
+          </div>
+          {{end}}
+        </div>
+      </div>
+    </div>
+    <hr>
+    <footer style="margin-bottom:24px;" data-localize="title.copyright">
+      &copy; 资产存证 2018 - by Arxan (<a href="http://chain.arxanfintech.com">wwww.arxanfintech.com</a>)
+    </footer>
+  </div>
+</div>
+
+  <script type="text/javascript" src="../static/js/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src="../static/js/crypto.js"></script>
+  <script type="text/javascript" src="../static/js/filedrop.js"></script>
+  <script src="../static/js/jquery.localize-min.js"></script>
+  <script src="../static/js/jquery.i18n-min.js"></script>
+  <script src="../static/js/jquery.i18n.messagestore-min.js"></script>
+  <script type="text/javascript" src="../static/js/main.js"></script>
+  <script type="text/javascript" src="../static/js/controllers/index.js"></script>
+
+</body>
+
+</html>
