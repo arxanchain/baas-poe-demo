@@ -1,7 +1,7 @@
 package main
 
 import (
-	_ "github.com/arxanchain/jove/services/poe-demo/routers"
+	_ "github.com/arxanchain/baas-poe-demo/routers"
 	"github.com/astaxie/beego"
 )
 

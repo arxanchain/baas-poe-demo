@@ -1,7 +1,7 @@
 package routers
 
 import (
-	"github.com/arxanchain/jove/services/poe-demo/controllers"
+	"github.com/arxanchain/baas-poe-demo/controllers"
 	"github.com/astaxie/beego"
 )
 
